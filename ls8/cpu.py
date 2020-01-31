@@ -117,6 +117,8 @@ class CPU:
             self.reg[reg_a] >> self.reg[reg_b]
         elif op == "MOD":
             self.reg[reg_a] %= self.reg[reg_b]
+        elif op == "ADDI":
+            self.reg[reg_a] += reg_b
         else:
             raise Exception("Unsupported ALU operation")
 
@@ -274,6 +276,11 @@ class CPU:
         operand_a = self.ram_read(self.pc + 1)
         operand_b = self.ram_read(self.pc + 2)
         self.alu("MOD", operand_a, operand_b)
+
+    def handle_addi(self):
+        operand_a = self.ram_read(self.pc + 1)
+        operand_b = self.ram_read(self.pc + 2)
+        self.alu("ADDI", operand_a, operand_b)
 
     def run(self):
         """Run the CPU."""
