@@ -41,6 +41,7 @@ class CPU:
         self.sp = 7
         self.reg[self.sp] = 0xf4
         self.im = 5
+        self.maskedInterrupts = 0 # non_pythonic casing
         self.IS = 6
         self.fl = 0b00000000
         self.running = True
@@ -298,6 +299,10 @@ class CPU:
         while self.running:
             if datetime.datetime.now() - t < datetime.timedelta(seconds=1):
                 # do the interrupt
+                # set bit 0 of r6. Set to what? 1?
+                self.IS = 0b00000001
+                
+
                 t = datetime.datetime.now()
             IR = self.ram_read(self.pc)
             self.branchtable[IR]()
