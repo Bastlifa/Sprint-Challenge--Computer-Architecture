@@ -247,40 +247,49 @@ class CPU:
         operand_a = self.ram_read(self.pc + 1)
         operand_b = self.ram_read(self.pc + 2)
         self.alu("AND", operand_a, operand_b)
+        self.pc += 3
 
     def handle_or(self):
         operand_a = self.ram_read(self.pc + 1)
         operand_b = self.ram_read(self.pc + 2)
         self.alu("OR", operand_a, operand_b)
+        self.pc += 3
 
     def handle_xor(self):
         operand_a = self.ram_read(self.pc + 1)
         operand_b = self.ram_read(self.pc + 2)
         self.alu("XOR", operand_a, operand_b)
+        self.pc += 3
 
     def handle_not(self):
         operand_a = self.ram_read(self.pc + 1)
         self.alu("NOT", operand_a)
+        self.pc += 2
 
     def handle_shl(self):
         operand_a = self.ram_read(self.pc + 1)
         operand_b = self.ram_read(self.pc + 2)
         self.alu("SHL", operand_a, operand_b)
+        self.pc += 3
 
     def handle_shr(self):
         operand_a = self.ram_read(self.pc + 1)
         operand_b = self.ram_read(self.pc + 2)
         self.alu("SHR", operand_a, operand_b)
+        self.pc += 3
 
     def handle_mod(self):
         operand_a = self.ram_read(self.pc + 1)
         operand_b = self.ram_read(self.pc + 2)
         self.alu("MOD", operand_a, operand_b)
+        self.pc += 3
 
     def handle_addi(self):
         operand_a = self.ram_read(self.pc + 1)
         operand_b = self.ram_read(self.pc + 2)
         self.alu("ADDI", operand_a, operand_b)
+        self.pc += 3
+
 
     def run(self):
         """Run the CPU."""
