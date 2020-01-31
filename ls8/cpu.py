@@ -3,29 +3,30 @@
 import sys
 import datetime
 
-ADD = 0b10100000
-CALL = 80
-CMP = 0b10100111
-DEC = 0b01100110
 HLT = 1
-IRET = 19
-JEQ = 0b01010101
-JMP = 0b01010100
-JNE = 0b01010110
-LDI = 130
-MUL = 162
-POP = 0b01000110
-PRN = 71
-PUSH = 0b01000101
 RET = 17
+IRET = 19
+PUSH = 69
+POP = 70
+PRN = 71
+CALL = 80
+JMP = 84
+JEQ = 85
+JNE = 86
+DEC = 102
+NOT = 105
+LDI = 130
 ST = 132
-AND = 0b10101000
-OR = 0b10101010
-XOR = 0b10101011
-NOT = 0b01101001
-SHL = 0b10101100
-SHR = 0b10101101
-MOD = 0b10100100
+ADD = 160
+MUL = 162
+MOD = 164
+CMP = 167
+AND = 168
+OR = 170
+XOR = 171
+SHL = 172
+SHR = 173
+ADDI = 200
 
 
 
@@ -45,6 +46,7 @@ class CPU:
         self.running = True
         self.branchtable = {}
         self.branchtable[ADD] = self.handle_add
+        self.branchtable[ADDI] = self.handle_addi
         self.branchtable[AND] = self.handle_and
         self.branchtable[CALL] = self.handle_call
         self.branchtable[CMP] = self.handle_cmp
