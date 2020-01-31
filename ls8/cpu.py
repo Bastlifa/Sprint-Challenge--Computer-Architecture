@@ -294,7 +294,11 @@ class CPU:
     def run(self):
         """Run the CPU."""
         self.running = True
+        t = datetime.datetime.now()
         while self.running:
+            if datetime.datetime.now() - t < datetime.timedelta(seconds=1):
+                # do the interrupt
+                t = datetime.datetime.now()
             IR = self.ram_read(self.pc)
             self.branchtable[IR]()
 
